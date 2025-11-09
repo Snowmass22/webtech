@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Carbon Footprint Result</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 100px; /* Space for sticky header */
+        }
+        main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        /* Result Card Styling */
+        .results-card {
+            background-color: var(--white-color);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .results-card h2 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .total-footprint {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+        }
+
+        .total-footprint span {
+            color: var(--color-primary);
+        }
+
+        .total-footprint small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #777;
+        }
+
+        .results-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .breakdown-list {
+            text-align: left;
+            margin: 15px auto 0;
+            padding: 0 20px;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-label {
+            font-weight: 600;
+            color: #444;
+        }
+
+        .category-value {
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .impact-message {
+            margin-top: 30px;
+            font-style: italic;
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+     <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="/home" class="logo">EcoTrack 🌿</a>
+                <ul class="nav-links">
+                    <li><a href="/userdashboard">Home</a></li>
+                    <li><a href="/calculator">Calculator</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="/learn">Learn More</a></li>
+                </ul>
+                <a href="/home" class="btn btn-primary">Logout</a>
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div id="results-card" class="results-card">
+                <h2>Your Annual Footprint</h2>
+                <p class="total-footprint">
+                    <span id="total-footprint-value"><%= totalFootprint %></span> metric tons <small>CO2e</small>
+                </p>
+
+                <h3>Breakdown:</h3>
+                <div class="breakdown-list">
+                    <div class="breakdown-item">
+                        <span class="category-label">🏠 Home Energy:</span>
+                        <span class="category-value" id="home-footprint-value"><%= homeFootprint %> tons</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="category-label">🚗 Transportation:</span>
+                        <span class="category-value" id="transport-footprint-value"><%= transportFootprint %> tons</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="category-label">🥩 Diet & Consumption:</span>
+                        <span class="category-value" id="diet-footprint-value"><%= dietFootprint %> tons</span>
+                    </div>
+                </div>
+
+                <p class="impact-message" id="impact-message">
+                    <% if (totalFootprint < 5) { %>
+                        Your footprint is quite low! Keep up the great work!
+                    <% } else if (totalFootprint < 10) { %>
+                        You're doing well! Consider further reductions in high-impact areas.
+                    <% } else { %>
+                        There's significant room for improvement. Explore ways to reduce your impact!
+                    <% } %>
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

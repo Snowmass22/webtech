@@ -1,0 +1,114 @@
+
+.about-hero {
+    background: linear-gradient(to right, #e0f2f1, #e6f5f3);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    max-width: 800px;
+    margin: 0 auto 1rem;
+}
+
+.about-hero .hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #555;
+}
+
+
+.mission-section {
+    padding: 5rem 0;
+    background-color: var(--white-color);
+}
+
+.mission-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.mission-text .section-title {
+    text-align: left;
+}
+
+.mission-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.mission-image img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.story-section {
+    padding: 5rem 0;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.story-card {
+    background-color: var(--white-color);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--accent-color);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.story-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.story-card h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.cta-section {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-top: 0;
+}
+.cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 992px) {
+    .mission-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .mission-text .section-title {
+        text-align: center;
+    }
+    .mission-image {
+        order: -1;
+        max-width: 400px;
+        margin: 0 auto 3rem;
+    }
+}
+
+@media (max-w: 768px) {
+    .about-hero h1 { font-size: 2.2rem; }
+    .story-grid { grid-template-columns: 1fr; }
+}
+

@@ -1,0 +1,101 @@
+
+.learn-hero {
+    background: var(--background-color);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.learn-hero h1 {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    max-width: 800px;
+    margin: 0 auto 1rem;
+}
+
+.learn-hero .hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #555;
+}
+
+.tip-section, .tip-section-alt {
+    padding: 5rem 0;
+}
+.tip-section-alt {
+    background-color: var(--white-color);
+}
+
+.tip-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.tip-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.tip-content .section-title {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.tip-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.tip-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.tip-content ul li {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-left: 30px;
+    position: relative;
+}
+
+.tip-content ul li::before {
+    content: '✔';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+.tip-section-alt .tip-grid .tip-content {
+    order: 2;
+}
+.tip-section-alt .tip-grid .tip-image {
+    order: 1;
+}
+@media (max-width: 992px) {
+    .tip-grid {
+        grid-template-columns: 1fr;
+    }
+    .tip-section-alt .tip-grid .tip-content,
+    .tip-section-alt .tip-grid .tip-image {
+        order: unset; /* Reset order on mobile */
+    }
+    .tip-content .section-title {
+        text-align: center;
+    }
+    .tip-image {
+        max-width: 450px;
+        margin: 0 auto 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .learn-hero h1 { font-size: 2.2rem; }
+}
+

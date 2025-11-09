@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Carbon Calculator</title>
+    <style>
+        :root {
+            /* Define a soft color palette */
+            --color-primary: #4CAF50; /* Green */
+            --color-secondary: #FFC107; /* Yellow/Gold */
+            --color-background: #F8F8F8;
+            --color-text: #333;
+            --color-card-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .calculator-container {
+            max-width: 600px;
+            width: 90%;
+            background: var(--color-card-bg);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        /* Section Styling */
+        .section {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background-color: #fcfcfc;
+        }
+
+        .section h2 {
+            color: var(--color-secondary);
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        /* Input Group and Label Styling */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Slider Styling */
+        input[type="range"] {
+            width: 100%;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            cursor: pointer;
+        }
+
+        /* Select Styling */
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: white;
+            appearance: none; /* Remove default arrow in some browsers */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"><path fill="%234CAF50" d="M0 0l5 6 5-6z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            font-size: 1em;
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #388E3C;
+        }
+        .site-header {
+    background-color: var(--white-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: box-shadow var(--transition-speed) ease;
+}
+.header-back {
+  padding: 2em;
+  text-align: center;
+}
+
+.header-back img {
+  max-width: 1200px;
+  max-height: 600px;
+  border-radius: 8px;
+}
+
+.site-header.scrolled {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color var(--transition-speed) ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed) ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+    </style>
+</head>
+<body>
+    <!-- <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="/home" class="logo">EcoTrack 🌿</a>
+                <ul class="nav-links">
+                    <li><a href="/userdashboard">Home</a></li>
+                    <li><a href="/calculator" class="active">Calculator</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="/learn">Learn More</a></li>
+                </ul>
+                <a href="/home" class="btn btn-primary">Logout</a>
+            </nav>
+        </div>
+    </header> -->
+    <div class="calculator-container">
+        <h1>EcoTrack 🌿</h1>
+        <form method="post" action="/carbon">
+
+            <div class="section">
+                <h2>🏠 Home Energy Intensity</h2>
+                <div class="form-group">
+                    <label for="energy_intensity">
+                        How energy efficient is your home?
+                        <span id="energy-value">(Medium)</span>
+                    </label>
+                    <input type="range" id="energy_intensity" name="energy_intensity" min="1" max="5" step="1" value="3" required>
+                    <small style="display: flex; justify-content: space-between;">
+                        <span>Low Use</span>
+                        <span>High Use</span>
+                    </small>
+                     <label for="electricity_kwh">Annual Electricity Usage (kWh):</label>
+                <input type="number" id="electricity_kwh" name="electricity_kwh" min="0" value="0" required>
+                <label for="household_size">2. Number of people in your household:</label>
+                <input type="number" id="household_size" name="household_size" min="1" required value="1">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🚗 Commute & Travel</h2>
+                <div class="form-group">
+                    <label for="commute_method">Primary Commute Method:</label>
+                    <select id="commute_method" name="commute_method" required>
+                        <option value="public">Public Transport / Walk / Cycle</option>
+                        <option value="electric">Electric/Hybrid Car</option>
+                        <option value="gas_efficient">Gas Car (Efficient)</option>
+                        <option value="gas_inefficient">Gas Car (Large/SUV)</option>
+                    </select>
+                    <label for="car_distance_km">Total Annual Distance Driven (km or miles):</label>
+                <input type="number" id="car_distance_km" name="car_distance_km" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="annual_flights">Annual Air Travel:</label>
+                    <select id="annual_flights" name="annual_flights" required>
+                        <option value="none">None</option>
+                        <option value="low">1-2 Short Trips</option>
+                        <option value="medium">1 Long Trip OR 3-5 Short Trips</option>
+                        <option value="high">Multiple Long Trips</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🥩 Diet & Consumption</h2>
+                <div class="form-group">
+                    <label for="diet_type">Typical Diet:</label>
+                    <select id="diet_type" name="diet_type" required>
+                        <option value="vegan">Vegan / Plant-Based</option>
+                        <option value="vegetarian">Vegetarian / Pescatarian</option>
+                        <option value="low_meat">Low Meat (Only poultry/fish)</option>
+                        <option value="high_meat">High Meat (Includes Beef/Lamb weekly)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Calculate My Simplified Footprint</button>
+        </form>
+    </div>
+
+    <script>
+        const slider = document.getElementById('energy_intensity');
+        const output = document.getElementById('energy-value');
+        const labels = ['Very Low', 'Low', 'Medium', 'High', 'Very High'];
+
+        slider.oninput = function() {
+            output.innerHTML = `(${labels[this.value - 1]})`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form');
+    // We'll use annual kilograms of CO2e for calculation
+    const KG_PER_TON = 1000;
+
+    // --- 1. Emission Factors (Placeholder Data - Adjust these based on scientific sources!) ---
+    // These are simplified annual CO2e impacts in KG.
+
+    const EMISSION_FACTORS = {
+        // HOME ENERGY: Baseline impact based on the "intensity" slider (1=Low, 5=High)
+        // These values represent the estimated annual CO2e *before* factoring in specific kWh.
+        energy_intensity_baseline: {
+            '1': 1000,  // Very Low
+            '2': 1800,  // Low
+            '3': 2600,  // Medium
+            '4': 3500,  // High
+            '5': 4500,  // Very High
+        },
+        
+        // TRANSPORTATION: Commute Method
+        commute_method_baseline: {
+            'public': 500,          // Very low baseline for public transit, walking, etc.
+            'electric': 1500,       // Baseline for car use (manufacturing, maintenance)
+            'gas_efficient': 2000,  // Mid-range gas car baseline
+            'gas_inefficient': 2800 // High-range gas car baseline
+        },
+
+        // TRANSPORTATION: Air Travel
+        annual_flights_impact: {
+            'none': 0,
+            'low': 750,     // 1-2 Short trips
+            'medium': 2500, // 1 Long trip
+            'high': 6000    // Multiple long trips
+        },
+
+        // DIET & CONSUMPTION
+        diet_type_impact: {
+            'vegan': 800,
+            'vegetarian': 1200,
+            'low_meat': 1800,
+            'high_meat': 3300 // High impact for beef/lamb
+        },
+
+        // Numerical Emission Factors (using US-based examples, adjust for your region!)
+        // Note: We'll use a specific factor for the 'Annual Electricity Usage (kWh)'
+        ELECTRICITY_KG_PER_KWH: 0.45, // Example: 0.45 kg CO2e per kWh (US average)
+        KM_TO_KG_CO2E_PER_LITER_GAS: 2.31, // Kilograms CO2e per liter of gasoline
+    };
+
+    // Existing JS for the slider label (retained for functionality)
+    const slider = document.getElementById('energy_intensity');
+    const output = document.getElementById('energy-value');
+    const labels = ['Very Low', 'Low', 'Medium', 'High', 'Very High'];
+
+    slider.oninput = function() {
+        output.innerHTML = `(${labels[this.value - 1]})`;
+    }
+});
+    </script>
+   
+</body>
+</html>
